@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: "http://localhost:9092"
+      name: "party"
+      profile: ${customProfile} # vm option 으로 넘겨주기!s
