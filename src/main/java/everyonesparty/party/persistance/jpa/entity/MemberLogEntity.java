@@ -1,4 +1,4 @@
-package everyonesparty.party.persistance.entity;
+package everyonesparty.party.persistance.jpa.entity;
 
 import lombok.*;
 
@@ -18,6 +18,7 @@ public class MemberLogEntity {
     private Long id;
 
     private String ottName;
+
 
 
 }
