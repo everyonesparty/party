@@ -1,7 +1,7 @@
-package everyonesparty.party.presentation.exception.advice;
+package everyonesparty.party.presentation.controller.advice;
 
 import everyonesparty.party.presentation.exception.PresentationException;
-import everyonesparty.party.presentation.exception.error.CommonError;
+import everyonesparty.party.presentation.exception.error.CommonPresentationError;
 import everyonesparty.party.presentation.exception.error.PresentaionErrorMap;
 import everyonesparty.party.presentation.exception.error.PresentationError;
 import everyonesparty.party.presentation.response.ResponseUtils;
@@ -22,7 +22,7 @@ import javax.validation.ConstraintViolationException;
  *      
  */
 @Slf4j
-@RestControllerAdvice(basePackages="everyonesparty.auth")
+@RestControllerAdvice(basePackages="everyonesparty.party.presentation.controller")
 public class PresentationControllerAdvice {
 
     /***
@@ -34,7 +34,7 @@ public class PresentationControllerAdvice {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> superExceptionHandler(Exception ex) {
         log.error("Exception: ",  ex);
-        return ResponseUtils.out(CommonError.INTERNAL_SERVER_ERROR);
+        return ResponseUtils.out(CommonPresentationError.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(PresentationException.class)
@@ -51,7 +51,7 @@ public class PresentationControllerAdvice {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     protected ResponseEntity<?> httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException ex) {
         log.error("HttpMessageNotReadableException: ",  ex);
-        return ResponseUtils.out(CommonError.BAD_REQUEST);
+        return ResponseUtils.out(CommonPresentationError.BAD_REQUEST);
     }
 
     /***
@@ -62,7 +62,7 @@ public class PresentationControllerAdvice {
     @ExceptionHandler(ConstraintViolationException.class)
     protected ResponseEntity<?> constraintViolationExceptionHandler(ConstraintViolationException ex) {
         log.error("ConstraintViolationException: ",  ex);
-        return ResponseUtils.out(CommonError.BAD_REQUEST);
+        return ResponseUtils.out(CommonPresentationError.BAD_REQUEST);
     }
 
     /***
@@ -81,11 +81,11 @@ public class PresentationControllerAdvice {
             String errorKey = constraintViolation.getMessage();
             PresentationError error = PresentaionErrorMap.getError(errorKey);
             if(error == null)
-                return ResponseUtils.out(CommonError.BAD_REQUEST);
+                return ResponseUtils.out(CommonPresentationError.BAD_REQUEST);
             else
                 return ResponseUtils.out(error);
         }catch(Exception e) {
-            return ResponseUtils.out(CommonError.BAD_REQUEST);
+            return ResponseUtils.out(CommonPresentationError.BAD_REQUEST);
         }
     }
 
@@ -99,6 +99,6 @@ public class PresentationControllerAdvice {
     @ExceptionHandler(MissingServletRequestPartException.class)
     protected ResponseEntity<?> missingServletRequestPartExceptionHandler(MissingServletRequestPartException ex) {
         log.error("MissingServletRequestPartException: ",  ex);
-        return ResponseUtils.out(CommonError.BAD_REQUEST);
+        return ResponseUtils.out(CommonPresentationError.BAD_REQUEST);
     }
 }
