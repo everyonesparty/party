@@ -1,4 +1,4 @@
-package everyonesparty.party.persistance.jpa.entity;
+package everyonesparty.party.persistance.rdb.entity;
 
 import lombok.*;
 
