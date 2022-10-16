@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * > 파티장 로그
  */
 @Entity
-@Table(name = "member_log_table")
+@Table(name = "organizer_log_table")
 @Builder
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
