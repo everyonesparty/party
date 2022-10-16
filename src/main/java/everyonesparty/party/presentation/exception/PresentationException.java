@@ -1,23 +1,24 @@
-package everyonesparty.party.common.exception;
+package everyonesparty.party.presentation.exception;
 
-import everyonesparty.party.common.exception.error.RestError;
+import everyonesparty.party.presentation.exception.error.PresentationError;
 import lombok.Data;
 
 /***
  * > 목적 1: 로직상 분기를 if ~ else 와 return 의 반복으로 안하고 보다 깔끔하게 하기 위함
  * > 목적 2: spring 의 예외에 대한 handler & advice 기능을 활용하여 예외 상황 시 응답을 공통화 하기 위함
+ *      -> Presentation 계층에서 에러처리 코드를 모듈화 하기 위한 Exception
  */
 @Data
-public class LogicalRuntimeException extends RuntimeException{
-    private RestError restError;
+public class PresentationException extends RuntimeException{
+    private PresentationError presentationError;
 
     /***
      * > 오로지 restError 를 인자로 받는 생성자만 허용
      * > LogicalRuntimeException 은 반드시 restError 를 가져야 함을 강제한다.
-     * @param restError
+     * @param presentationError
      */
-    public LogicalRuntimeException(RestError restError){
-        this.restError = restError;
+    public PresentationException(PresentationError presentationError){
+        this.presentationError = presentationError;
     }
 
     /***

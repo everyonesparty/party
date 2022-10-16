@@ -1,6 +1,6 @@
-package everyonesparty.party.common.response;
+package everyonesparty.party.presentation.response;
 
-import everyonesparty.party.common.exception.error.RestError;
+import everyonesparty.party.presentation.exception.error.PresentationError;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Response<T> {
     private T data;
-    private RestError error;
+    private PresentationError error;
 
     public boolean hasError(){
         return (error != null);

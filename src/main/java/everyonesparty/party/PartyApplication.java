@@ -1,7 +1,7 @@
 package everyonesparty.party;
 
-import everyonesparty.party.common.exception.error.ErrorMap;
-import everyonesparty.party.common.exception.error.RestError;
+import everyonesparty.party.presentation.exception.error.PresentaionErrorMap;
+import everyonesparty.party.presentation.exception.error.PresentationError;
 import org.reflections.Reflections;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,11 +23,11 @@ public class PartyApplication {
 	 */
 	private static void setErrorMap(){
 		Reflections reflections = new Reflections("everyonesparty.auth.common.exception.error");
-		Set<Class<? extends RestError>> subTypesOf = reflections.getSubTypesOf(RestError.class);
+		Set<Class<? extends PresentationError>> subTypesOf = reflections.getSubTypesOf(PresentationError.class);
 		for(Class clazz: subTypesOf){
 			for(Object obj: EnumSet.allOf(clazz)){
-				RestError error = (RestError) obj;
-				ErrorMap.setError(error.toString(),error);
+				PresentationError error = (PresentationError) obj;
+				PresentaionErrorMap.setError(error.toString(),error);
 			}
 		}
 	}

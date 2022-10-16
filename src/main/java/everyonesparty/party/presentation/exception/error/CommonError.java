@@ -1,6 +1,6 @@
-package everyonesparty.party.common.exception.error;
+package everyonesparty.party.presentation.exception.error;
 
-import everyonesparty.party.common.response.ResponseError;
+import everyonesparty.party.presentation.response.ResponseError;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 
@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
  * 미리 정의해 둔 에러들
  */
 @AllArgsConstructor
-public enum CommonError implements RestError{
+public enum CommonError implements PresentationError {
 
     INVALID_DATA(HttpStatus.BAD_REQUEST,"요청 오류 입니다.(의미상 오류: api 스팩은 맞지만 논리상 안맞는 요청)"),
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "요청 오류 입니다.(형식상 오류: api 스팩에 안맞는 요청)"),

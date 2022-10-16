@@ -1,4 +1,4 @@
-package everyonesparty.party.common.validation;
+package everyonesparty.party.presentation.validation;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

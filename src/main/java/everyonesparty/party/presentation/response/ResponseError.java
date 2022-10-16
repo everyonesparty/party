@@ -1,4 +1,4 @@
-package everyonesparty.party.common.response;
+package everyonesparty.party.presentation.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

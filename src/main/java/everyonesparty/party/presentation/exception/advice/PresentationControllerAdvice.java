@@ -1,10 +1,10 @@
-package everyonesparty.party.common.exception.advice;
+package everyonesparty.party.presentation.exception.advice;
 
-import everyonesparty.party.common.exception.LogicalRuntimeException;
-import everyonesparty.party.common.exception.error.CommonError;
-import everyonesparty.party.common.exception.error.ErrorMap;
-import everyonesparty.party.common.exception.error.RestError;
-import everyonesparty.party.common.response.ResponseUtils;
+import everyonesparty.party.presentation.exception.PresentationException;
+import everyonesparty.party.presentation.exception.error.CommonError;
+import everyonesparty.party.presentation.exception.error.PresentaionErrorMap;
+import everyonesparty.party.presentation.exception.error.PresentationError;
+import everyonesparty.party.presentation.response.ResponseUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -23,7 +23,7 @@ import javax.validation.ConstraintViolationException;
  */
 @Slf4j
 @RestControllerAdvice(basePackages="everyonesparty.auth")
-public class CommonControllerAdvice {
+public class PresentationControllerAdvice {
 
     /***
      * > 가장 상위의 예외 핸들러
@@ -37,10 +37,10 @@ public class CommonControllerAdvice {
         return ResponseUtils.out(CommonError.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(LogicalRuntimeException.class)
-    public ResponseEntity<?> logicalRuntimeExceptionHandler(LogicalRuntimeException ex) {
-        log.info("LogicalRuntimeException: {}",  ex.getRestError().getErrorMsg());
-        return ResponseUtils.out(ex.getRestError());
+    @ExceptionHandler(PresentationException.class)
+    public ResponseEntity<?> logicalRuntimeExceptionHandler(PresentationException ex) {
+        log.info("LogicalRuntimeException: {}",  ex.getPresentationError().getErrorMsg());
+        return ResponseUtils.out(ex.getPresentationError());
     }
 
     /***
@@ -79,7 +79,7 @@ public class CommonControllerAdvice {
             // 별도의 ConstraintValidator에서 발생한 검증 오류의 경우 넘어온 에러 객체로 응답
             ConstraintViolation<?> constraintViolation = ex.getBindingResult().getAllErrors().get(0).unwrap(ConstraintViolation.class);
             String errorKey = constraintViolation.getMessage();
-            RestError error = ErrorMap.getError(errorKey);
+            PresentationError error = PresentaionErrorMap.getError(errorKey);
             if(error == null)
                 return ResponseUtils.out(CommonError.BAD_REQUEST);
             else

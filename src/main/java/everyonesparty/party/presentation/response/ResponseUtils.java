@@ -1,6 +1,6 @@
-package everyonesparty.party.common.response;
+package everyonesparty.party.presentation.response;
 
-import everyonesparty.party.common.exception.error.RestError;
+import everyonesparty.party.presentation.exception.error.PresentationError;
 import org.springframework.http.ResponseEntity;
 
 public class ResponseUtils {
@@ -22,11 +22,11 @@ public class ResponseUtils {
 
     /***
      * RestError 만 들어오면 실패 응답
-     * @param restError
+     * @param presentationError
      * @return
      */
-    public static ResponseEntity out(RestError restError){
-        return ResponseEntity.status(restError.getHttpStatus()).body(restError.toResponseError());
+    public static ResponseEntity out(PresentationError presentationError){
+        return ResponseEntity.status(presentationError.getHttpStatus()).body(presentationError.toResponseError());
     }
 
     /***
@@ -36,8 +36,8 @@ public class ResponseUtils {
      */
     public static ResponseEntity out(Response response){
         if(response.hasError()){
-            RestError restError = response.getError();
-            return ResponseEntity.status(restError.getHttpStatus()).body(restError.toResponseError());
+            PresentationError presentationError = response.getError();
+            return ResponseEntity.status(presentationError.getHttpStatus()).body(presentationError.toResponseError());
         }
         else{
             return ResponseEntity.ok(response.getData());
