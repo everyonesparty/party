@@ -6,10 +6,9 @@ import everyonesparty.party.usecase.domain.enums.OttName;
 import everyonesparty.party.usecase.domain.enums.PartyStatus;
 import lombok.*;
 
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import static javax.persistence.FetchType.LAZY;
 
 /***
  * > 파티원 로그
@@ -23,6 +22,7 @@ import javax.persistence.Table;
 public class MemberLogEntity {
 
     @Id
+    @Column(name = "member_log_id")
     private Long id;
 
     @Convert(converter = OttNameConverter.class)
@@ -34,4 +34,8 @@ public class MemberLogEntity {
     private String memberId;
 
     private Long cardId;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "organizer_log_id")
+    private OrganizerLogEntity organizerLogs;
 }
