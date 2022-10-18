@@ -14,7 +14,7 @@ import static javax.persistence.FetchType.LAZY;
  * > 파티원 로그
  */
 @Entity
-@Table(name = "member_log_table")
+@Table(name = "member_log")
 @Builder
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -36,6 +36,6 @@ public class MemberLogEntity {
     private Long cardId;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "organizer_log_id")
+    @JoinColumn(name = "fk_organizer_log_member_log")   // fk 명명 규칙 => fk_${부모}_${자식}
     private OrganizerLogEntity organizerLogs;
 }

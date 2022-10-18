@@ -20,7 +20,7 @@ import static javax.persistence.FetchType.LAZY;
  * > 파티장 로그
  */
 @Entity
-@Table(name = "organizer_log_table")
+@Table(name = "organizer_log")
 @Builder
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -54,6 +54,6 @@ public class OrganizerLogEntity {
     private String organizerId;
 
     @OneToMany(fetch = LAZY, cascade = CascadeType.ALL) // 파티가 사라지면 멤버도 전파
-    @JoinColumn(name="organizer_log_id")
+    @JoinColumn(name="fk_organizer_log_member_log")
     private List<MemberLogEntity> memberLogs;
 }
