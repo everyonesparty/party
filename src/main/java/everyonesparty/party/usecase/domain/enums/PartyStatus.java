@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum PartyStatus implements CodeValue{
+public enum PartyStatus implements CodeValue {
 
     MATCHING("01", "모집중"),
     COMPLETE("02", "모집완료"),
