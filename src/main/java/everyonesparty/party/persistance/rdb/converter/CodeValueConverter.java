@@ -1,6 +1,6 @@
 package everyonesparty.party.persistance.rdb.converter;
 
-import everyonesparty.party.usecase.domain.enums.CodeValue;
+import everyonesparty.party.usecase.domain.enums.codevalue.CodeValue;
 
 import javax.persistence.AttributeConverter;
 import java.util.EnumSet;

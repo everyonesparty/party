@@ -1,4 +1,4 @@
-package everyonesparty.party.usecase.domain.enums;
+package everyonesparty.party.usecase.domain.enums.codevalue;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

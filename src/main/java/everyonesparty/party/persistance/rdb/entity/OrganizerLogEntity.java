@@ -6,10 +6,10 @@ import everyonesparty.party.persistance.rdb.converter.OttNameConverter;
 import everyonesparty.party.persistance.rdb.converter.PartyStatusConverter;
 import everyonesparty.party.usecase.domain.MemberLog;
 import everyonesparty.party.usecase.domain.OrganizerLog;
-import everyonesparty.party.usecase.domain.enums.Date;
-import everyonesparty.party.usecase.domain.enums.MatchMethod;
-import everyonesparty.party.usecase.domain.enums.OttName;
-import everyonesparty.party.usecase.domain.enums.PartyStatus;
+import everyonesparty.party.usecase.domain.enums.codevalue.Date;
+import everyonesparty.party.usecase.domain.enums.codevalue.MatchMethod;
+import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
+import everyonesparty.party.usecase.domain.enums.codevalue.PartyStatus;
 import lombok.*;
 import org.apache.commons.collections4.CollectionUtils;
 
@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 
 /***
@@ -69,7 +70,7 @@ public class OrganizerLogEntity {
     @NotNull
     private String organizerId;
 
-    @OneToMany(fetch = LAZY, cascade = CascadeType.ALL) // 파티가 사라지면 멤버도 전파
+    @OneToMany(fetch = EAGER, cascade = CascadeType.ALL) // 파티가 사라지면 멤버도 전파
     @JoinColumn(name="fk_organizer_log_member_log")
     private List<MemberLogEntity> memberLogEntities;
 
@@ -105,6 +106,7 @@ public class OrganizerLogEntity {
                 .organizerId(this.organizerId)
                 .memberLogs(convertMemberLogEntitiesToDomain(this.memberLogEntities))
                 // fixme: cascade.lazy 설정이 의미없어지는 지점 -> 이럴땐 보통 어떻게 도메인 & 엔티티 메핑 하는지??
+                // fixme: 이 경우는 파티장 하위의 파티원이 많지 않기 때문에 바로 가져오도록 하기
                 .build();
     }
 

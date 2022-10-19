@@ -3,14 +3,14 @@ package everyonesparty.party.persistance.rdb.entity;
 import everyonesparty.party.persistance.rdb.converter.OttNameConverter;
 import everyonesparty.party.persistance.rdb.converter.PartyStatusConverter;
 import everyonesparty.party.usecase.domain.MemberLog;
-import everyonesparty.party.usecase.domain.OrganizerLog;
-import everyonesparty.party.usecase.domain.enums.OttName;
-import everyonesparty.party.usecase.domain.enums.PartyStatus;
+import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
+import everyonesparty.party.usecase.domain.enums.codevalue.PartyStatus;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 
 /***
@@ -43,7 +43,7 @@ public class MemberLogEntity {
     @NotNull
     private Long cardId;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "fk_organizer_log_member_log")   // fk 명명 규칙 => fk_${부모}_${자식}
     private OrganizerLogEntity organizerLogEntity;
 

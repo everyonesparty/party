@@ -1,4 +1,4 @@
-package everyonesparty.party.usecase.domain.enums;
+package everyonesparty.party.usecase.domain.enums.codevalue;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,24 +12,26 @@ import java.util.stream.Stream;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum PartyStatus implements CodeValue {
-
-    MATCHING("01", "모집중"),
-    COMPLETE("02", "모집완료"),
-    CANCEL("03", "취소");
+public enum OttName implements CodeValue {
+    NETFLIX("01", "넷플릭스"),
+    WAVVE("02", "웨이브"),
+    WATCHA("03", "왓챠"),
+    LAFTEL("04", "라프텔"),
+    TVING("05", "티빙"),
+    DISNEY("06", "디즈니");
 
     private String code;
     private String value;
 
     /***
-     * > code 에 해당하는 PartyStatus 을 찾아서 리턴
+     * > code 에 해당하는 OttName 을 찾아서 리턴
      * > 없을 시 NoSuchElementException() 을 던짐
      * @param code
      * @return
      */
-    public static PartyStatus find(String code) {
-        return Stream.of(PartyStatus.values())
-                .filter(partyStatus -> partyStatus.code.equals(code))
+    public static OttName find(String code) {
+        return Stream.of(OttName.values())
+                .filter(ottName -> ottName.code.equals(code))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException());
     }

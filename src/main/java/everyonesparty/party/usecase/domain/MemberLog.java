@@ -1,7 +1,7 @@
 package everyonesparty.party.usecase.domain;
 
-import everyonesparty.party.usecase.domain.enums.OttName;
-import everyonesparty.party.usecase.domain.enums.PartyStatus;
+import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
+import everyonesparty.party.usecase.domain.enums.codevalue.PartyStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

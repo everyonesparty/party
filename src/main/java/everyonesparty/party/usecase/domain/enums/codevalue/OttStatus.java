@@ -1,4 +1,4 @@
-package everyonesparty.party.usecase.domain.enums;
+package everyonesparty.party.usecase.domain.enums.codevalue;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,10 @@ import java.util.stream.Stream;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum OttName implements CodeValue {
-    NETFLIX("01", "넷플릭스"),
-    WAVVE("02", "웨이브"),
-    WATCHA("03", "왓챠"),
-    LAFTEL("04", "라프텔"),
-    TVING("05", "티빙"),
-    DISNEY("06", "디즈니");
+public enum OttStatus implements CodeValue {
+    IMMEDIATE_MATCHING("01","즉시매칭"),
+    NORMAL("02","보통"),
+    CONGESTION("03","혼잡");
 
     private String code;
     private String value;
@@ -29,9 +26,9 @@ public enum OttName implements CodeValue {
      * @param code
      * @return
      */
-    public static OttName find(String code) {
-        return Stream.of(OttName.values())
-                .filter(ottName -> ottName.code.equals(code))
+    public static OttStatus find(String code) {
+        return Stream.of(OttStatus.values())
+                .filter(ottStatus -> ottStatus.code.equals(code))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException());
     }

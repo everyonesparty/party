@@ -1,4 +1,4 @@
-package everyonesparty.party.usecase.domain.enums;
+package everyonesparty.party.usecase.domain.enums.codevalue;
 
 public interface CodeValue {
     String getCode();

@@ -1,6 +1,6 @@
 package everyonesparty.party.persistance.rdb.converter;
 
-import everyonesparty.party.usecase.domain.enums.OttName;
+import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
 
 /***
  * > jpa entity <-> db 사이에서 Enum mapping

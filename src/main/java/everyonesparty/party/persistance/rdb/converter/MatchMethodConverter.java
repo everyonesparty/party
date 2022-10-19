@@ -1,6 +1,6 @@
 package everyonesparty.party.persistance.rdb.converter;
 
-import everyonesparty.party.usecase.domain.enums.MatchMethod;
+import everyonesparty.party.usecase.domain.enums.codevalue.MatchMethod;
 
 /***
  * > jpa entity <-> db 사이에서 Enum mapping
