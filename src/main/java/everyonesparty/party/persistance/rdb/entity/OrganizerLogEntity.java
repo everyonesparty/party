@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
 
 /***
  * > 파티장 로그
@@ -107,6 +106,7 @@ public class OrganizerLogEntity {
                 .memberLogs(convertMemberLogEntitiesToDomain(this.memberLogEntities))
                 // fixme: cascade.lazy 설정이 의미없어지는 지점 -> 이럴땐 보통 어떻게 도메인 & 엔티티 메핑 하는지??
                 // fixme: 이 경우는 파티장 하위의 파티원이 많지 않기 때문에 바로 가져오도록 하기
+                // fixme: 하위 레코드가 많을 경우 연관관계를 만들지말고 각자 가져오는것으로 해결?
                 .build();
     }
 

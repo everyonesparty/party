@@ -2,7 +2,7 @@ package everyonesparty.party.persistance.rdb.entity;
 
 import everyonesparty.party.persistance.rdb.converter.OttStatusConverter;
 import everyonesparty.party.usecase.domain.CurrentOttStatus;
-import everyonesparty.party.usecase.domain.MemberLog;
+import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
 import everyonesparty.party.usecase.domain.enums.codevalue.OttStatus;
 import lombok.*;
 
@@ -23,8 +23,8 @@ public class CurrentOttStatusEntity {
 
     @Id
     @NotNull
-    @Column(name = "ott_status_id")
-    private Long id;
+    @Column(name = "ott_name")
+    private OttName ottName;
 
     @NotNull
     private Boolean isUsed;
@@ -35,7 +35,7 @@ public class CurrentOttStatusEntity {
 
     public CurrentOttStatus toDomain() {
         return CurrentOttStatus.builder()
-                .id(this.id)
+                .ottName(this.ottName)
                 .isUsed(this.isUsed)
                 .ottStatus(this.ottStatus)
                 .build();
@@ -43,7 +43,7 @@ public class CurrentOttStatusEntity {
 
     public static CurrentOttStatusEntity fromDomain(CurrentOttStatus currentOttStatus) {
         return CurrentOttStatusEntity.builder()
-                .id(currentOttStatus.getId())
+                .ottName(currentOttStatus.getOttName())
                 .isUsed(currentOttStatus.getIsUsed())
                 .ottStatus(currentOttStatus.getOttStatus())
                 .build();

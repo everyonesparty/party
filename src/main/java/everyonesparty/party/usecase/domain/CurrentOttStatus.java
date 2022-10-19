@@ -1,5 +1,6 @@
 package everyonesparty.party.usecase.domain;
 
+import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
 import everyonesparty.party.usecase.domain.enums.codevalue.OttStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import lombok.Getter;
 @Builder
 public class CurrentOttStatus {
 
-    private Long id;
+    private OttName ottName;
 
     private Boolean isUsed;
 
