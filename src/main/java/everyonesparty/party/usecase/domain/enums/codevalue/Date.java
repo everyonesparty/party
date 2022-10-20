@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum Date implements CodeValue{
+public enum Date implements CodeValue {
 
     FIRST("01", "1일"),
     SECOND("02","2일"),

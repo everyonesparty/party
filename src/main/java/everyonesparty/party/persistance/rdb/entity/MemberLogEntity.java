@@ -1,6 +1,5 @@
 package everyonesparty.party.persistance.rdb.entity;
 
-import everyonesparty.party.persistance.rdb.converter.OttNameConverter;
 import everyonesparty.party.persistance.rdb.converter.PartyStatusConverter;
 import everyonesparty.party.usecase.domain.MemberLog;
 import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
@@ -11,7 +10,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import static javax.persistence.FetchType.EAGER;
-import static javax.persistence.FetchType.LAZY;
 
 /***
  * > 파티원 로그
@@ -30,7 +28,7 @@ public class MemberLogEntity {
     private Long id;
 
     @NotNull
-    @Convert(converter = OttNameConverter.class)
+    @Enumerated(EnumType.STRING)
     private OttName ottName;
 
     @NotNull

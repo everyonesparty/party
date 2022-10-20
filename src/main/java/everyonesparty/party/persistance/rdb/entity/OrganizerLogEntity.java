@@ -2,7 +2,6 @@ package everyonesparty.party.persistance.rdb.entity;
 
 import everyonesparty.party.persistance.rdb.converter.DateConverter;
 import everyonesparty.party.persistance.rdb.converter.MatchMethodConverter;
-import everyonesparty.party.persistance.rdb.converter.OttNameConverter;
 import everyonesparty.party.persistance.rdb.converter.PartyStatusConverter;
 import everyonesparty.party.usecase.domain.MemberLog;
 import everyonesparty.party.usecase.domain.OrganizerLog;
@@ -53,7 +52,7 @@ public class OrganizerLogEntity {
     private Long accountId; // 계좌번호를 직접 결재 서비스로 전달하면 안됨 -> 계좌 테이블의 주요키를 Long 타입의 임의 값으로 설정
 
     @NotNull
-    @Convert(converter = OttNameConverter.class)
+    @Enumerated(EnumType.STRING)
     private OttName ottName;
 
     @NotNull

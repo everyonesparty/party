@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum MatchMethod implements CodeValue{
+public enum MatchMethod implements CodeValue {
 
     AUTO("01", "자동매칭"),
     MANUALLY("02", "직접초대");
