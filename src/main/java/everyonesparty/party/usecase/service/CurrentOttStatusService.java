@@ -5,6 +5,7 @@ import everyonesparty.party.usecase.repositoryprovider.CurrentOttStatusRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -13,12 +14,18 @@ public class CurrentOttStatusService {
 
     private final CurrentOttStatusRepositoryProvider currentOttStatusRepositoryProvider;
 
+
     public CurrentOttStatus findByOttName(String ottName) {
         return currentOttStatusRepositoryProvider.findByOttName(ottName)
                 .orElseThrow(() -> new NoSuchElementException());
     }
 
     public CurrentOttStatus save(CurrentOttStatus currentOttStatus) {
-        return currentOttStatusRepositoryProvider.save(currentOttStatus);
+        return currentOttStatusRepositoryProvider.save(currentOttStatus)
+                .orElseThrow(() -> new NoSuchElementException());
+    }
+
+    public List<CurrentOttStatus> findAll() {
+        return currentOttStatusRepositoryProvider.findAll();
     }
 }

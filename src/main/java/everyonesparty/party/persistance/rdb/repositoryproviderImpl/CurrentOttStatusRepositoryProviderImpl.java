@@ -7,7 +7,10 @@ import everyonesparty.party.usecase.repositoryprovider.CurrentOttStatusRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -15,12 +18,20 @@ public class CurrentOttStatusRepositoryProviderImpl implements CurrentOttStatusR
 
     private final CurrentOttStatusRepository currentOttStatusRepository;
 
+    @Override
+    public List<CurrentOttStatus> findAll() {
+        return currentOttStatusRepository.findAll().stream()
+                .map(CurrentOttStatusEntity::toDomain)
+                .collect(Collectors.toList());
+    }
+
     public Optional<CurrentOttStatus> findByOttName(String ottName) {
         return currentOttStatusRepository.findByOttName(ottName)
                 .map(CurrentOttStatusEntity::toDomain);
     }
 
-    public CurrentOttStatus save(CurrentOttStatus currentOttStatus) {
-        return currentOttStatusRepository.save(CurrentOttStatusEntity.fromDomain(currentOttStatus)).toDomain();
+    public Optional<CurrentOttStatus> save(CurrentOttStatus currentOttStatus) {
+        return Optional.ofNullable(currentOttStatusRepository.save(CurrentOttStatusEntity.fromDomain(currentOttStatus)))
+                .map(CurrentOttStatusEntity::toDomain);
     }
 }
