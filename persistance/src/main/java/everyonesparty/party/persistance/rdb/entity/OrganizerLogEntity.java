@@ -1,8 +1,8 @@
 package everyonesparty.party.persistance.rdb.entity;
 
 import everyonesparty.party.persistance.rdb.converter.DateConverter;
-import everyonesparty.party.persistance.rdb.converter.MatchMethodConverter;
 import everyonesparty.party.persistance.rdb.converter.PartyStatusConverter;
+import everyonesparty.party.persistance.rdb.converter.MatchMethodConverter;
 import everyonesparty.party.usecase.domain.MemberLog;
 import everyonesparty.party.usecase.domain.OrganizerLog;
 import everyonesparty.party.usecase.domain.enums.codevalue.Date;
@@ -68,7 +68,7 @@ public class OrganizerLogEntity {
     @NotNull
     private String organizerId;
 
-    @OneToMany(fetch = EAGER, cascade = CascadeType.ALL) // 파티가 사라지면 멤버도 전파
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) // 파티가 사라지면 멤버도 전파
     @JoinColumn(name="fk_organizer_log_member_log")
     private List<MemberLogEntity> memberLogEntities;
 

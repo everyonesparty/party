@@ -1,1 +1,5 @@
 rootProject.name = 'party'
+include 'persistance'
+include 'usecase'
+include 'presentation'
+

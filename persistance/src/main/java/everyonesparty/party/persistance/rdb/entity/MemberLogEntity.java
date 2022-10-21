@@ -41,7 +41,7 @@ public class MemberLogEntity {
     @NotNull
     private Long cardId;
 
-    @ManyToOne(fetch = EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_organizer_log_member_log")   // fk 명명 규칙 => fk_${부모}_${자식}
     private OrganizerLogEntity organizerLogEntity;
 
