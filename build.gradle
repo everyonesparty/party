@@ -40,7 +40,6 @@ subprojects {
 
 	// 관리하는 모듈에 공통 dependencies
 	dependencies {
-		implementation group: 'org.springframework.security', name: 'spring-security-core'
 		implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
 		implementation group: 'org.reflections', name: 'reflections', version: '0.10.2'
 		implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.0'
