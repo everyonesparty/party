@@ -24,7 +24,7 @@ public class CurrentOttStatusController {
 
     private final CurrentOttStatusService currentOttStatusService;
 
-    @ApiOperation(value = "ott 상태 조회", notes = "작성예정")
+    @ApiOperation(value = "ott 정보 조회", notes = "https://keen-derby-c16.notion.site/OTT-94762d223bd542eabad969a9072c15b7")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "카카오 로그인 성공 후 jwt token", required = true, dataType = "String", paramType = "header")
     })
