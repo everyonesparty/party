@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class PartyInfoController {
 
-    @ApiOperation(value = "로그인한 사용자의 파티 현황 정보 조회", notes = "추후 작성")
+    @ApiOperation(value = "로그인한 사용자의 파티 현황 정보 조회", notes = "https://keen-derby-c16.notion.site/104fdfb176d44330b59388950776d611")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "카카오 로그인 성공 후 jwt token", required = true, dataType = "String", paramType = "header")
     })
