@@ -18,7 +18,7 @@ public enum OttName implements CodeValue {
     WATCHA("03", "왓챠"),
     LAFTEL("04", "라프텔"),
     TVING("05", "티빙"),
-    DISNEY("06", "디즈니");
+    DISNEY("06", "디즈니+");
 
     private String code;
     private String value;
