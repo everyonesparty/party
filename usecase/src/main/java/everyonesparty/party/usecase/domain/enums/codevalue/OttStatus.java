@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public enum OttStatus implements CodeValue {
-    IMMEDIATE_MATCHING("01","즉시매칭"),
+    IMMEDIATE_MATCHING("01","즉시매칭 가능"),
     NORMAL("02","보통"),
     CONGESTION("03","혼잡");
 
