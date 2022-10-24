@@ -1,8 +1,6 @@
 package everyonesparty.party.presentation.controller;
 
-import everyonesparty.party.presentation.dto.CurrentOttStatusDTO;
 import everyonesparty.party.presentation.response.ResponseUtils;
-import everyonesparty.party.usecase.service.CurrentOttStatusService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -14,25 +12,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.stream.Collectors;
 
+/***
+ * > 파티 정보 CRUD 컨트롤러
+ */
 @Slf4j
 @Controller
-@RequestMapping("/api/v1/ott")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
-public class CurrentOttStatusController {
+public class PartyInfoController {
 
-    private final CurrentOttStatusService currentOttStatusService;
-
-    @ApiOperation(value = "ott 정보 조회", notes = "https://keen-derby-c16.notion.site/OTT-94762d223bd542eabad969a9072c15b7")
+    @ApiOperation(value = "로그인한 사용자의 파티 현황 정보 조회", notes = "추후 작성")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "카카오 로그인 성공 후 jwt token", required = true, dataType = "String", paramType = "header")
     })
-    @GetMapping("/status")
-    public ResponseEntity<List<CurrentOttStatusDTO.Res>> findAll() {
-        return ResponseUtils.out(currentOttStatusService.findAll().stream()
-                .map(CurrentOttStatusDTO.Res::fromDomian)
-                .collect(Collectors.toList()));
+    @GetMapping("/user/party")
+    public ResponseEntity<?> findPartyInfoByUserId(HttpServletRequest request) {
+        String kakaoId = request.getHeader("kakaId");
+
+        return ResponseUtils.out(kakaoId);
     }
 }

@@ -14,26 +14,3 @@ dependencies {
     implementation group: 'com.h2database', name: 'h2', version: '1.3.164'
 
 }
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
-sourceSets{
-    test {
-        java.srcDirs = ['src/test/java/unit', 'src/test/java/intg']
-    }
-}
-
-test {
-    useJUnitPlatform()
-}
-
-// 테스트 경로 설정
-// -> unit : 유닛 테스트
-// -> intg : 통합 테스트
-sourceSets{
-    test{
-        java.srcDirs = ['src/test/java/unit', 'src/test/java/intg']
-    }
-}
