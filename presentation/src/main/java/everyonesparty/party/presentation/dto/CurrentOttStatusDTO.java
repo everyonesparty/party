@@ -30,11 +30,18 @@ public class CurrentOttStatusDTO {
         @JsonSerialize(using = CodeValueSerializer.class)
         private OttStatus ottStatus;
 
+        private Long price;
+        private Long organizerFee;
+        private Long memberFee;
+
         public static Res fromDomian(CurrentOttStatus currentOttStatus) {
             return Res.builder()
                     .ottName(currentOttStatus.getOttName())
                     .isUsed(currentOttStatus.getIsUsed())
                     .ottStatus(currentOttStatus.getOttStatus())
+                    .price(currentOttStatus.getPrice())
+                    .organizerFee(currentOttStatus.getOrganizerFee())
+                    .memberFee(currentOttStatus.getMemberFee())
                     .build();
         }
     }

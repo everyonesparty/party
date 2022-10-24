@@ -15,8 +15,9 @@ import lombok.Getter;
 public class CurrentOttStatus {
 
     private OttName ottName;
-
     private Boolean isUsed;
-
     private OttStatus ottStatus;
+    private Long price;
+    private Long organizerFee;
+    private Long memberFee;
 }

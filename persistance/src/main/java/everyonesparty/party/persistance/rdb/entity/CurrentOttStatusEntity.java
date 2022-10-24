@@ -33,11 +33,23 @@ public class CurrentOttStatusEntity {
     @Enumerated(EnumType.STRING)
     private OttStatus ottStatus;
 
+    @NotNull
+    private Long price;
+
+    @NotNull
+    private Long organizerFee;
+
+    @NotNull
+    private Long memberFee;
+
     public CurrentOttStatus toDomain() {
         return CurrentOttStatus.builder()
                 .ottName(this.ottName)
                 .isUsed(this.isUsed)
                 .ottStatus(this.ottStatus)
+                .price(this.price)
+                .organizerFee(this.organizerFee)
+                .memberFee(this.memberFee)
                 .build();
     }
 
@@ -46,6 +58,9 @@ public class CurrentOttStatusEntity {
                 .ottName(currentOttStatus.getOttName())
                 .isUsed(currentOttStatus.getIsUsed())
                 .ottStatus(currentOttStatus.getOttStatus())
+                .price(currentOttStatus.getPrice())
+                .organizerFee(currentOttStatus.getOrganizerFee())
+                .memberFee(currentOttStatus.getMemberFee())
                 .build();
     }
 }
