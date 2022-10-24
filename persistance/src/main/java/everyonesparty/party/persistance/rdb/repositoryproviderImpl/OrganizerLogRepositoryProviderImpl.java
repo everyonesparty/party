@@ -7,7 +7,9 @@ import everyonesparty.party.usecase.repositoryprovider.OrganizerLogRepositoryPro
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Repository
@@ -17,9 +19,10 @@ public class OrganizerLogRepositoryProviderImpl implements OrganizerLogRepositor
     private final OrganizerLogRepository organizerLogRepository;
 
     @Override
-    public Optional<OrganizerLog> findByOrganizerId(String organizerId) {
-        return organizerLogRepository.findByOrganizerId(organizerId)
-                .map(OrganizerLogEntity::toDomain);
+    public List<OrganizerLog> findByOrganizerId(String organizerId) {
+        return organizerLogRepository.findByOrganizerId(organizerId).stream()
+                .map(OrganizerLogEntity::toDomain)
+                .collect(Collectors.toList());
     }
 
     @Override

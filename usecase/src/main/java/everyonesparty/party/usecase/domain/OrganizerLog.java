@@ -39,4 +39,12 @@ public class OrganizerLog {
     private String organizerId;
 
     private List<MemberLog> memberLogs;
+
+    /***
+     * > 지금 매칭 진행중인지?
+     * @return
+     */
+    public boolean isMatching() {
+        return PartyStatus.MATCHING.equals(partyStatus);
+    }
 }

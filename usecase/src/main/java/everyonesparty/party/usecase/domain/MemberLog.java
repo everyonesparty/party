@@ -25,4 +25,12 @@ public class MemberLog {
     private Long cardId;
 
     private OrganizerLog organizerLog;
+
+    /***
+     * > 지금 매칭 진행중인지?
+     * @return
+     */
+    public boolean isMatching() {
+        return PartyStatus.MATCHING.equals(partyStatus);
+    }
 }

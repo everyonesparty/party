@@ -7,7 +7,9 @@ import everyonesparty.party.usecase.repositoryprovider.MemberLogRepositoryProvid
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Repository
@@ -17,9 +19,10 @@ public class MemberLogRepositoryProviderImpl implements MemberLogRepositoryProvi
     private final MemberLogRepository memberLogRepository;
 
     @Override
-    public Optional<MemberLog> findByMemberId(String memberId) {
-        return memberLogRepository.findByMemberId(memberId)
-                .map(MemberLogEntity::toDomain);
+    public List<MemberLog> findByMemberId(String memberId) {
+        return memberLogRepository.findByMemberId(memberId).stream()
+                .map(MemberLogEntity::toDomain)
+                .collect(Collectors.toList());
     }
 
     @Override
