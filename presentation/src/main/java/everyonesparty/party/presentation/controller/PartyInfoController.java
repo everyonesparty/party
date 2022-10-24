@@ -30,6 +30,8 @@ public class PartyInfoController {
     public ResponseEntity<?> findPartyInfoByUserId(HttpServletRequest request) {
         String kakaoId = request.getHeader("kakaId");
 
+
+
         return ResponseUtils.out(kakaoId);
     }
 }
