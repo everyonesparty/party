@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @Builder
-public class UserPartyInfo {
+public class CurrentUserPartyInfo {
     String kakaoId;
     List<MemberLog> memberInfo;
     List<OrganizerLog> organizerInfo;

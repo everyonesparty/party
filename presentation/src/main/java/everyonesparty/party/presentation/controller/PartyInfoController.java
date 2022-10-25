@@ -1,6 +1,10 @@
 package everyonesparty.party.presentation.controller;
 
+import everyonesparty.party.presentation.exception.PresentationException;
+import everyonesparty.party.presentation.exception.error.CommonPresentationError;
+import everyonesparty.party.presentation.exception.error.PresentationError;
 import everyonesparty.party.presentation.response.ResponseUtils;
+import everyonesparty.party.usecase.service.PartyInfoService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -22,6 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class PartyInfoController {
 
+    private PartyInfoService partyInfoService;
+
     @ApiOperation(value = "로그인한 사용자의 파티 현황 정보 조회", notes = "https://keen-derby-c16.notion.site/104fdfb176d44330b59388950776d611")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "카카오 로그인 성공 후 jwt token", required = true, dataType = "String", paramType = "header")
@@ -29,9 +35,9 @@ public class PartyInfoController {
     @GetMapping("/user/party")
     public ResponseEntity<?> findPartyInfoByUserId(HttpServletRequest request) {
         String kakaoId = request.getHeader("kakaId");
-
-
-
-        return ResponseUtils.out(kakaoId);
+        if(kakaoId == null){
+            throw new PresentationException(CommonPresentationError.INTERNAL_SERVER_ERROR);
+        }
+        return ResponseUtils.out(partyInfoService.findByKakaoId(kakaoId));
     }
 }

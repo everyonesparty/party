@@ -1,6 +1,6 @@
 package everyonesparty.party.usecase.service;
 
-import everyonesparty.party.usecase.domain.UserPartyInfo;
+import everyonesparty.party.usecase.domain.CurrentUserPartyInfo;
 import everyonesparty.party.usecase.repositoryprovider.MemberLogRepositoryProvider;
 import everyonesparty.party.usecase.repositoryprovider.OrganizerLogRepositoryProvider;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +17,8 @@ public class PartyInfoService {
      * > kakaoId 에 해당하는 사용자의 파티정보 조회
      * @param kakaoId
      */
-    public UserPartyInfo findByKakaoId(String kakaoId) {
-        return UserPartyInfo.builder()
+    public CurrentUserPartyInfo findByKakaoId(String kakaoId) {
+        return CurrentUserPartyInfo.builder()
                 .kakaoId(kakaoId)
                 .memberInfo(memberLogRepositoryProvider.findByMemberId(kakaoId))
                 .organizerInfo(organizerLogRepositoryProvider.findByOrganizerId(kakaoId))
