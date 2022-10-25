@@ -34,6 +34,7 @@ public class CurrentOttStatusDTO {
         private Long organizerFee;
         private Long memberFee;
 
+        // TODO: DTO 마다 있는 fromDomian 을 공통화 할 수 없을까?
         public static Res fromDomian(CurrentOttStatus currentOttStatus) {
             return Res.builder()
                     .ottName(currentOttStatus.getOttName())

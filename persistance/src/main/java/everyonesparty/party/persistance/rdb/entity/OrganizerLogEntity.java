@@ -109,6 +109,7 @@ public class OrganizerLogEntity {
                 .build();
     }
 
+    // TODO: DTO 마다 있는 fromDomian 을 공통화 할 수 없을까?
     /***
      * > organizerLog 도메인 객체를 파라미터로 받아서 OrganizerLogEntity 생성
      * @param organizerLog

@@ -53,6 +53,7 @@ public class CurrentOttStatusEntity {
                 .build();
     }
 
+    // TODO: DTO 마다 있는 fromDomian 을 공통화 할 수 없을까?
     public static CurrentOttStatusEntity fromDomain(CurrentOttStatus currentOttStatus) {
         return CurrentOttStatusEntity.builder()
                 .ottName(currentOttStatus.getOttName())
