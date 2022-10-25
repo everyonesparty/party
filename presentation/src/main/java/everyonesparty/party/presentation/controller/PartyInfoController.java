@@ -33,11 +33,7 @@ public class PartyInfoController {
             @ApiImplicitParam(name = "Authorization", value = "카카오 로그인 성공 후 jwt token", required = true, dataType = "String", paramType = "header")
     })
     @GetMapping("/user/party")
-    public ResponseEntity<?> findPartyInfoByUserId(HttpServletRequest request) {
-        String kakaoId = request.getHeader("kakaId");
-        if(kakaoId == null){
-            throw new PresentationException(CommonPresentationError.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<?> findPartyInfoByUserId(String kakaoId) {
         return ResponseUtils.out(partyInfoService.findByKakaoId(kakaoId));
     }
 }
