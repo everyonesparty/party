@@ -34,7 +34,6 @@ public class OrganizerLogEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
     @Column(name = "organizer_log_id")
     private Long id;
 

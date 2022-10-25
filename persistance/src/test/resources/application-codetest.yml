@@ -1,0 +1,19 @@
+# 추후 민감정보가 포함되면 이것도 config-set 으로 분리
+
+spring:
+  jpa:
+    properties:
+      hibernate.format_sql: true
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: "create"
+  h2:
+    console:
+      enable: true
+      path: "/h2"
+  datasource:
+    url: "jdbc:h2:mem:test"
+    driver-class-name: "org.h2.Driver"
+    username: "sa"
+    password:
