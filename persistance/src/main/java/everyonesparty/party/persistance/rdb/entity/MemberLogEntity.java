@@ -23,6 +23,7 @@ import static javax.persistence.FetchType.EAGER;
 public class MemberLogEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "member_log_id")
     private Long id;
