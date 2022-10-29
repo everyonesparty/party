@@ -35,7 +35,7 @@ public class PartyInfoController {
         return ResponseUtils.out(CurrentUserPartyInfoDTO.Res.fromDomian(partyInfoService.findByKakaoId(kakaoId)));
     }
 
-    @ApiOperation(value = "파티장 정보 등록", notes = "추후 작성 예정")
+    @ApiOperation(value = "파티장 정보 등록", notes = "https://keen-derby-c16.notion.site/e7d3e30ca84e4eb78177d10ba79a1087")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "카카오 로그인 성공 후 jwt token", required = true, dataType = "String", paramType = "header")
     })
