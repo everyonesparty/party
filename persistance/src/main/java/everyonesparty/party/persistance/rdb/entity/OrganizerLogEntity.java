@@ -65,6 +65,7 @@ public class OrganizerLogEntity {
     @Convert(converter = PartyStatusConverter.class)
     private PartyStatus partyStatus;
 
+    //TODO: 유니크 값으로 검증 설정 & 카카오에서 주는 string len 설정
     @NotNull
     private String organizerId;
 

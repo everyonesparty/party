@@ -7,7 +7,6 @@ import everyonesparty.party.usecase.service.PartyInfoService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +37,7 @@ public class PartyInfoController {
     })
     @GetMapping("/user/party")
     public ResponseEntity<CurrentUserPartyInfoDTO> findPartyInfoByUserId(@ApiIgnore String kakaoIdFromToken) {
-        return ResponseUtils.out(CurrentUserPartyInfoDTO.Res.fromDomian(partyInfoService.findByKakaoId(kakaoIdFromToken)));
+        return ResponseUtils.out(CurrentUserPartyInfoDTO.Res.fromDomian(partyInfoService.findMatchingPartyInfoByKakaoId(kakaoIdFromToken)));
     }
 
     @ApiOperation(value = "파티장 정보 등록", notes = "https://keen-derby-c16.notion.site/e7d3e30ca84e4eb78177d10ba79a1087")
