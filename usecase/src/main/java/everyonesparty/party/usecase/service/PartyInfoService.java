@@ -1,6 +1,7 @@
 package everyonesparty.party.usecase.service;
 
 import everyonesparty.party.usecase.domain.CurrentUserPartyInfo;
+import everyonesparty.party.usecase.domain.OrganizerLog;
 import everyonesparty.party.usecase.repositoryprovider.MemberLogRepositoryProvider;
 import everyonesparty.party.usecase.repositoryprovider.OrganizerLogRepositoryProvider;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,10 @@ public class PartyInfoService {
                 .memberInfo(memberLogRepositoryProvider.findByMemberId(kakaoId))
                 .organizerInfo(organizerLogRepositoryProvider.findByOrganizerId(kakaoId))
                 .build();
+    }
+
+    public OrganizerLog saveOrganizerInfo(OrganizerLog reqOrganizerLog) {
+        return organizerLogRepositoryProvider.save(reqOrganizerLog)
+                .orElseThrow(() -> new RuntimeException()); // TODO: save 실패 시 로깅이나 유연하고 명시적인 예외처리 가능하도록
     }
 }

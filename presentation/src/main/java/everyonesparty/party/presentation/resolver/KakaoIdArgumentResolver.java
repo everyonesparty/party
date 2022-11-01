@@ -15,7 +15,7 @@ public class KakaoIdArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.getParameterType() == String.class &&
-                StringUtils.equals(parameter.getParameterName(), "kakaoId");
+                StringUtils.equals(parameter.getParameterName(), "kakaoIdFromToken");
     }
 
     @Override
