@@ -3,6 +3,7 @@ package everyonesparty.party.persistance.rdb.repositoryproviderImpl;
 import everyonesparty.party.persistance.rdb.entity.MemberLogEntity;
 import everyonesparty.party.persistance.rdb.repository.MemberLogRepository;
 import everyonesparty.party.usecase.domain.MemberLog;
+import everyonesparty.party.usecase.domain.enums.codevalue.OttName;
 import everyonesparty.party.usecase.domain.enums.codevalue.PartyStatus;
 import everyonesparty.party.usecase.repositoryprovider.MemberLogRepositoryProvider;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,20 @@ public class MemberLogRepositoryProviderImpl implements MemberLogRepositoryProvi
     @Override
     public List<MemberLog> findByMemberIdAndPartyStatusIn(String memberId, Collection<PartyStatus> partyStatus) {
         return memberLogRepository.findByMemberIdAndPartyStatusIn(memberId, partyStatus).stream()
+                .map(MemberLogEntity::toDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MemberLog> findByMemberIdAndOttNameAndPartyStatusIn(String memberId, OttName ottName, Collection<PartyStatus> partyStatus) {
+        return memberLogRepository.findByMemberIdAndOttNameAndPartyStatusIn(memberId, ottName, partyStatus).stream()
+                .map(MemberLogEntity::toDomain)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MemberLog> findByMemberIdInAndPartyStatusIn(Collection<String> memberId, Collection<PartyStatus> partyStatus) {
+        return memberLogRepository.findByMemberIdInAndPartyStatusIn(memberId, partyStatus).stream()
                 .map(MemberLogEntity::toDomain)
                 .collect(Collectors.toList());
     }

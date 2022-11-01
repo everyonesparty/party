@@ -22,7 +22,7 @@ class MemberLogRepositoryTest {
     private MemberLogRepository memberLogRepository;
 
     @Test
-    public void findByMemberIdAndPartyStatus() {
+    public void findByMemberIdAndPartyStatusIn() {
         // given
         final String memberId = "2012211";
         MemberLogEntity givenMemberLogEntity1 = MemberLogEntity.builder()
@@ -68,5 +68,63 @@ class MemberLogRepositoryTest {
 
         assertTrue(partyStatuses.contains(PartyStatus.MATCHING));
         assertTrue(partyStatuses.contains(PartyStatus.CANCEL));
+    }
+
+    @Test
+    public void findByMemberIdInAndPartyStatusIn() {
+        // given
+        final String memberId1 = "2012211";
+        final String memberId2 = "3012211";
+        final String memberId3 = "4012211";
+
+        MemberLogEntity givenMemberLogEntity1 = MemberLogEntity.builder()
+                .ottName(OttName.DISNEY)
+                .partyStatus(PartyStatus.CANCEL)
+                .memberId(memberId1)
+                .cardId(12L)
+                .build();
+
+        MemberLogEntity givenMemberLogEntity2 = MemberLogEntity.builder()
+                .ottName(OttName.NETFLIX)
+                .partyStatus(PartyStatus.MATCHING)
+                .memberId(memberId1)
+                .cardId(12L)
+                .build();
+
+        MemberLogEntity givenMemberLogEntity3 = MemberLogEntity.builder()
+                .ottName(OttName.WATCHA)
+                .partyStatus(PartyStatus.MATCHING)
+                .memberId(memberId2)
+                .cardId(12L)
+                .build();
+
+        MemberLogEntity givenMemberLogEntity4 = MemberLogEntity.builder()
+                .ottName(OttName.TVING)
+                .partyStatus(PartyStatus.COMPLETE)
+                .memberId(memberId3)
+                .cardId(12L)
+                .build();
+
+        memberLogRepository.save(givenMemberLogEntity1);
+        memberLogRepository.save(givenMemberLogEntity2);
+        memberLogRepository.save(givenMemberLogEntity3);
+        memberLogRepository.save(givenMemberLogEntity4);
+
+        // when
+        List<MemberLogEntity> resList = memberLogRepository.findByMemberIdInAndPartyStatusIn(List.of(memberId1, memberId2), List.of(PartyStatus.MATCHING, PartyStatus.CANCEL));
+
+        // then
+        List<PartyStatus> partyStatuses = resList.stream()
+                .map(memberLogEntity -> memberLogEntity.getPartyStatus())
+                .collect(Collectors.toList());
+
+        List<String> members = resList.stream()
+                .map(memberLogEntity -> memberLogEntity.getMemberId())
+                .collect(Collectors.toList());
+
+        assertTrue(partyStatuses.contains(PartyStatus.MATCHING));
+        assertTrue(partyStatuses.contains(PartyStatus.CANCEL));
+        assertTrue(members.contains(memberId1));
+        assertTrue(members.contains(memberId2));
     }
 }
