@@ -29,7 +29,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class PartyInfoController {
 
-    private PartyInfoService partyInfoService;
+    private final PartyInfoService partyInfoService;
 
     @ApiOperation(value = "로그인한 사용자의 파티 현황 정보 조회", notes = "https://keen-derby-c16.notion.site/104fdfb176d44330b59388950776d611")
     @ApiImplicitParams({
